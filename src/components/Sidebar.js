@@ -1,12 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 
-const Sidebar = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const toggleSidebar = () => {
-    setIsOpen(!isOpen);
-  };
-
+const Sidebar = ({ isOpen, toggleSidebar }) => {
   return (
     <div className="flex h-screen">
       {/* Sidebar overlay for mobile */}
@@ -29,7 +23,7 @@ const Sidebar = () => {
             className="text-gray-800 md:hidden text-2xl"
             onClick={toggleSidebar}
           >
-            <i className={`fas ${isOpen ? 'fa-times' : 'fa-bars'}`} />
+            <i className="fas fa-times" />
           </button>
         </div>
         <nav className="mt-4">
@@ -44,12 +38,6 @@ const Sidebar = () => {
 
       {/* Main content */}
       <main className="flex-1 p-4">
-        <button
-          className="md:hidden text-blue-500 text-2xl"
-          onClick={toggleSidebar}
-        >
-          <i className="fas fa-bars" />
-        </button>
         {/* Your main content goes here */}
       </main>
     </div>

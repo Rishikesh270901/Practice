@@ -1,14 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
 import Table from "./Table"; // Assuming your table component is named Table
 
 const HomePage = () => {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
+
   return (
     <div className="bg-slate-300 min-h-screen flex flex-col">
-      <Navbar />
+      <Navbar toggleSidebar={toggleSidebar} />
       <div className="flex flex-1 overflow-hidden">
-        <Sidebar />
+        <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
         <main className="flex-1 p-4 lg:p-6 overflow-y-auto">
           <div className="mb-6">
             <h2 className="font-sans font-bold text-3xl sm:text-4xl md:text-5xl">
